@@ -219,21 +219,21 @@ provide-module wiki %{
 # ────────────── keys  ──────────────
 
 declare-user-mode wiki
-map global wiki n     ': wiki-next-link<ret>'
-map global wiki p     ': wiki-prev-link<ret>'
-map global wiki <ret> ': wiki-open-link<ret>'
-map global wiki y     ': wiki-yank-link<ret>'
-map global wiki i     ': wiki-inline-link<ret>'
-map global wiki l     ': wiki-make-link<ret>'
-map global wiki c     ': wiki-toggle-checkbox<ret>'
+map global wiki n     ': wiki-next-link<ret>'       -docstring "jump to next wiki link"
+map global wiki p     ': wiki-prev-link<ret>'       -docstring "jump to previous wiki link"
+map global wiki <ret> ': wiki-open-link<ret>'       -docstring "open link"
+map global wiki y     ': wiki-yank-link<ret>'       -docstring "yank link"
+map global wiki i     ': wiki-inline-link<ret>'     -docstring "convert a reference link to inline"
+map global wiki l     ': wiki-make-link<ret>'       -docstring "create an inline link"
+map global wiki c     ': wiki-toggle-checkbox<ret>' -docstring "toggle checkbox"
 
-map global wiki <tab>   ': wiki-next-link<ret>'
-map global wiki <s-tab> ': wiki-prev-link<ret>'
-map global wiki <ret>   ': wiki-open-link<ret>'
-map global wiki +       ': wiki-yank-link<ret>'
-map global wiki <minus> ': wiki-inline-link<ret>'
-map global wiki <c-k>   ': wiki-make-link<ret>'
-map global wiki ';'     ': wiki-toggle-checkbox<ret>'
+map global wiki <tab>   ': wiki-next-link<ret>' -docstring "jump to next wiki link"
+map global wiki <s-tab> ': wiki-prev-link<ret>' -docstring "jump to previous wiki link"
+map global wiki <ret>   ': wiki-open-link<ret>' -docstring "open link"
+map global wiki +       ': wiki-yank-link<ret>' -docstring "yank link"
+map global wiki <minus> ': wiki-inline-link<ret>' -docstring "convert a reference link to inline"
+map global wiki <c-k>   ': wiki-make-link<ret>' -docstring "create an inline link"
+map global wiki ';'     ': wiki-toggle-checkbox<ret>' -docstring "toggle checkbox"
 
 hook global BufSetOption filetype=wiki %{
   require-module wiki
