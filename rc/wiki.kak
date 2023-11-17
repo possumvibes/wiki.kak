@@ -216,18 +216,26 @@ provide-module wiki %{
   }
 }
 
-
 # ────────────── keys  ──────────────
+
+declare-user-mode wiki
+map global wiki n     ': wiki-next-link<ret>'
+map global wiki p     ': wiki-prev-link<ret>'
+map global wiki <ret> ': wiki-open-link<ret>'
+map global wiki y     ': wiki-yank-link<ret>'
+map global wiki i     ': wiki-inline-link<ret>'
+map global wiki l     ': wiki-make-link<ret>'
+map global wiki c     ': wiki-toggle-checkbox<ret>'
+
+map global wiki <tab>   ': wiki-next-link<ret>'
+map global wiki <s-tab> ': wiki-prev-link<ret>'
+map global wiki <ret>   ': wiki-open-link<ret>'
+map global wiki +       ': wiki-yank-link<ret>'
+map global wiki <minus> ': wiki-inline-link<ret>'
+map global wiki <c-k>   ': wiki-make-link<ret>'
+map global wiki ';'     ': wiki-toggle-checkbox<ret>'
+
 hook global BufSetOption filetype=wiki %{
   require-module wiki
-
-  map buffer normal <tab>   ': wiki-next-link<ret>'
-  map buffer normal <s-tab> ': wiki-prev-link<ret>'
-  map buffer normal <ret>   ': wiki-open-link<ret>'
-  map buffer normal +       ': wiki-yank-link<ret>'
-  map buffer normal <minus> ': wiki-inline-link<ret>'
-  map buffer normal <c-k>   ': wiki-make-link<ret>'
-  map buffer normal ';'     ': wiki-toggle-checkbox<ret>'
-
   set-option buffer formatcmd "python3 %opt{wiki_plugin_path}/format.py --format"
 }
